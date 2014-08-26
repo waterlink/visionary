@@ -219,6 +219,16 @@ module Visionary
 
         expect(fut3.value).to eq("WTF? Why answer is: 42?")
       end
+
+      it "does not fails when awaits more than once" do
+        fut = future { do_something; 42 }
+
+        expect {
+          fut.await
+          fut.await
+          fut.await
+        }.not_to raise_error
+      end
     end
 
     private
