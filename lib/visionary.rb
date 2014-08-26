@@ -1,5 +1,5 @@
 require "visionary/version"
+require "visionary/future"
 
 module Visionary
-  # Your code goes here...
 end
