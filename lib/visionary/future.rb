@@ -24,6 +24,7 @@ module Visionary
     end
 
     def run
+      raise RuntimeError, "This future have been already started" if thread
       @thread = Thread.new { run! }
       self
     end

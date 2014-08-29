@@ -231,6 +231,25 @@ module Visionary
       end
     end
 
+    describe "#run" do
+      it "runs future" do
+        fut = Future.new { do_something; 42 }
+
+        2.times { do_something }
+
+        fut.run
+        expect(fut.state).to eq(:pending)
+      end
+
+      it "cannot be run when it is already running" do
+        fut = future { do_something; 42 }
+
+        expect {
+          fut.run
+        }.to raise_error(RuntimeError)
+      end
+    end
+
     private
 
     def do_something
