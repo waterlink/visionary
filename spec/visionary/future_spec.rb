@@ -1,7 +1,3 @@
-require "spec_helper"
-
-Visionary::Future.setup!
-
 module Visionary
   RSpec.describe Future do
 
